@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redux basic example</title>
+  <script src="./redux.min.js"></script>
+</head>
+<body>
+<script>
+const reducer = (state = {count: 0}, action) => {
+  switch (action.type){
+    case 'INCREASE': return {count: state.count + 1};
+    case 'DECREASE': return {count: state.count - 1};
+    default: return state;
+  }
+}
+
+const actions = {
+  increase: () => ({type: 'INCREASE'}),
+  decrease: () => ({type: 'DECREASE'})
+}
+
+const act = {
+  increase: {type: 'INCREASE'},
+  decrease: {type: 'DECREASE'}
+}
+
+const store = Redux.createStore(reducer);
+
+store.subscribe(() =>
+  console.log(store.getState())
+);
+console.log(typeof actions.increase());
+store.dispatch(actions.increase()) // {count: 1}
+store.dispatch(actions.increase()) // {count: 2}
+store.dispatch(actions.increase()) // {count: 3}
+
+store.dispatch(act.decrease);//dispatch!!!
+//chrome devtool
+//通过 reducer 创建一个 store ，每当我们在 store 上 dispatch 一个 action ，store 内的数据就会相应地发生变化。
+</script>
+</body>
+</html>
