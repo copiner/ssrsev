@@ -4,6 +4,7 @@ import {
   REQUEST_POSTS, RECEIVE_POSTS
 } from '../actions'
 
+//reducers generate initial state
 const selectedReddit = (state = 'reactjs', action) => {
   switch (action.type) {
     case SELECT_REDDIT:
@@ -13,11 +14,7 @@ const selectedReddit = (state = 'reactjs', action) => {
   }
 }
 
-const posts = (state = {
-  isFetching: false,
-  didInvalidate: false,
-  items: []
-}, action) => {
+const posts = (state = {isFetching: false, didInvalidate: false, items: []}, action) => {
   switch (action.type) {
     case INVALIDATE_REDDIT:
       return {
@@ -44,6 +41,7 @@ const posts = (state = {
 }
 
 const postsByReddit = (state = { }, action) => {
+  //console.log([action.reddit]);
   switch (action.type) {
     case INVALIDATE_REDDIT:
     case RECEIVE_POSTS:

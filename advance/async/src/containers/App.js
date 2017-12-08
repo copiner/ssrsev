@@ -5,6 +5,7 @@ import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
 
+//reducers generate initial state
 class App extends Component {
   static propTypes = {
     selectedReddit: PropTypes.string.isRequired,
@@ -72,11 +73,12 @@ class App extends Component {
 
 const mapStateToProps = state => {
   const { selectedReddit, postsByReddit } = state
+  //console.log(postsByReddit[selectedReddit]);
+
   const {
     isFetching,
     lastUpdated,
-    items: posts
-  } = postsByReddit[selectedReddit] || {
+    items: posts } = postsByReddit[selectedReddit] || {
     isFetching: true,
     items: []
   }

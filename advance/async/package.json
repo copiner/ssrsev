@@ -1,7 +1,6 @@
 {
   "name": "async",
   "version": "0.0.1",
-  "private": true,
   "devDependencies": {
     "react-scripts": "^1.0.2",
     "redux-logger": "^3.0.6"
