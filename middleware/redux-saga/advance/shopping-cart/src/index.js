@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -15,6 +14,10 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 )
 sagaMiddleware.run(rootSaga)
+
+store.subscribe(() =>
+  console.log(store.getState())
+)
 
 render(
   <Provider store={store}>

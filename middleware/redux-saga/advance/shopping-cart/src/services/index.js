@@ -14,6 +14,7 @@ export const api = {
   },
 
   buyProducts(cart) {
+    //console.log(Object.keys(cart.quantityById).length);
     return new Promise( (resolve, reject) =>
         setTimeout(() => {
           if(Object.keys(cart.quantityById).length <= MAX_CHECKOUT)
@@ -24,3 +25,6 @@ export const api = {
     )
   }
 }
+
+
+//console.log(api.getProducts());
