@@ -158,6 +158,3 @@ constructor(props, context) {
 }
 
 ```
-
-
-### Redux中间件
