@@ -21,7 +21,7 @@ const logger = store => next => action => {
   return next(action)
 }
 
-'use strict';
+//'use strict';
 //
 // var logger = function logger(store) {
 //    return function (next) {
@@ -74,15 +74,16 @@ function applyMiddleware(middlewares) {
   middlewares.reverse()
 
   let dispatch = store.dispatch
-  middlewares.forEach(middleware =>
-    dispatch = middleware(store)(dispatch)
+  middlewares.forEach((middleware)=>{
+      dispatch = middleware(store)(dispatch);
+    }
   )
   return Object.assign({}, store, { dispatch })
 }
 
 const middlewares = [ logger, collectError ];
 
-//applyMiddleware(...middlewares);
+applyMiddleware(middlewares);
 
 //equal ===
 
@@ -92,7 +93,6 @@ let dispatch1 = logger(store)(next);
 let dispatch2 = collectError(store)(dispatch1);
 
 store.dispatch = dispatch2;
-
 
 //run
 var action = {'name':'wdaonngg'}
@@ -104,3 +104,23 @@ store.dispatch(action);
 ```
 
 上面的middleware(store)(dispatch) 就相当于是 const logger = store => next => {}，这就是构造后的dispatch，继续向下传递。这里middlewares.reverse()，进行数组反转的原因，是最后构造的dispatch，实际上是最先执行的。因为在applyMiddleware串联的时候，每个中间件只是返回一个新的dispatch函数给下一个中间件，实际上这个dispatch并不会执行。只有当我们在程序中通过store.dispatch(action)，真正派发的时候，才会执行。而此时的dispatch是最后一个中间件返回的包装函数
+
+上例中,store.dispatch内容如下：
+
+```javascript
+
+'use strict';
+function (action) {
+    console.log('logger : ', action);
+    return function (action) {
+      try {
+        console.log('collect : ', action);
+        return function(action){
+           console.log("store : ",action);
+        };
+      } catch (err) {
+        console.error('error', err);
+      }
+    };
+};
+```
