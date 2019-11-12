@@ -1,0 +1,47 @@
+{
+  "name": "abc",
+  "version": "1.0.0",
+  "description": "small demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --color --config config/webpack.dev.js --open",
+    "build": "cross-env NODE_ENV=production && webpack --config config/webpack.pro.js",
+    "babel": "./node_modules/.bin/babel src --out-dir dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "compression-webpack-plugin": "^3.0.0",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.2.0",
+    "webpack": "^4.41.0",
+    "webpack-bundle-analyzer": "^3.5.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "core-js": "^3.2.1",
+    "lodash": "^4.17.15",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "regenerator-runtime": "^0.13.3"
+  }
+}
