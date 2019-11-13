@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => ({
 // })
 
 //如果传递的是一个对象，mapDispatchToProps写法修改如下
-//同时link.js中要修改为onClick(appOwnProps.filter)
+//同时link.js中要修改为onClick(ownProps.filter)
 const mapDispatchToProps = {
   onClick: setVisibilityFilter
 }

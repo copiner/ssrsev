@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Link = ({ state, ownProps, active, children, onClick }) => {
-  //console.log(state)  //打印state
-  //console.log(ownProps)
+  console.log(state)
+  console.log(ownProps)
+  console.log(active)
+  console.log(children)
   if (active) {
-    //console.log(active);  //at FilterLink.js
-    console.log({children});   //Footer.js组件中children
     return <span>{children}</span>
   }
 

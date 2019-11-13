@@ -3,10 +3,6 @@ import PropTypes from 'prop-types'
 import Todo from './Todo'
 
 const TodoList = ({state, ownProps, todos, onTodoClick }) => (
-  //console.log(state),
-  //console.log(ownProps),
-  //console.log(todos),
-  //console.log(onTodoClick),
   <ul>
     {todos.map(toodoo =>
       <Todo

@@ -4,7 +4,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './containers/App'
 import reducer from './reducers'
-import 'todomvc-app-css/index.css'
+import './index.css'
 
 const store = createStore(reducer)
 
@@ -12,9 +12,11 @@ store.subscribe(function () {
     //console.log(store.getState());
 });
 
-render(
+let fresh = (element) => render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  element
 )
+
+export default fresh;

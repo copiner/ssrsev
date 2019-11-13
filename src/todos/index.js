@@ -8,15 +8,19 @@ import reducer from './reducers'
 //state, reducer/index.js
 //初始值 {todos: [], visibilityFilter: "SHOW_ALL"}
 
-const store = createStore(reducer)
-console.log(store.getState());
+const store = createStore(reducer);
+
+//console.log(store)
+
 store.subscribe(function () {
-    console.log(store.getState());
+    //console.log(store.getState());
 });
 
-render(
+let fresh = (element) => render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  element
 )
+
+export default fresh;
