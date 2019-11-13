@@ -12,6 +12,7 @@ var state = {
 };
 
 //actions
+
 //var action = { type: 'ADD_TODO', text: 'Go to swimming pool' };
 var action = { type: 'TOGGLE_TODO', index: 1 }
 //var action = { type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ALL' }
@@ -23,10 +24,6 @@ function todoApp(state={}, action) {
     visibilityFilter: visibilityFilter(state.visibilityFilter, action)
   };
 };
-
-
-var app = todoApp(state, action);
-console.log(app);
 
 
 //we write smaller functions managing parts of the state:
@@ -54,3 +51,7 @@ function todos(state, action) {
     return state;
   }
 };
+
+
+var app = todoApp(state, action);
+console.log(app);
