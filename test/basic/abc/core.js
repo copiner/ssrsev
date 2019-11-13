@@ -11,11 +11,6 @@ var state = {
   visibilityFilter: 'SHOW_COMPLETED'
 };
 
-//actions
-
-//var action = { type: 'ADD_TODO', text: 'Go to swimming pool' };
-var action = { type: 'TOGGLE_TODO', index: 1 }
-//var action = { type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ALL' }
 
 //reducer   dispatch an action
 function todoApp(state={}, action) {
@@ -37,21 +32,33 @@ function visibilityFilter(state, action) {
   }
 };
 
+//
 function todos(state, action) {
   switch (action.type) {
-  case 'ADD_TODO':
-    return state.concat([{ text: action.text, completed: false }]);
-  case 'TOGGLE_TODO':
-    return state.map((todo, index, state) =>
-      action.index === index ?
-        { text: todo.text, completed: !todo.completed } :
-        todo
-   )
-  default:
-    return state;
+    case 'ADD_TODO':
+      return state.concat([{ text: action.text, completed: false }]);
+    case 'TOGGLE_TODO':
+      // return state.map((todo, index, state) =>
+      //   action.index === index ?
+      //     { text: todo.text, completed: !todo.completed } :
+      //     todo
+      // )
+
+      return state.map((todo, index, state) => {
+          return action.index === index ?
+          { text: todo.text, completed: !todo.completed } :
+          todo
+      })
+    default:
+      return state;
   }
 };
 
+//actions
+
+//var action = { type: 'ADD_TODO', text: 'Go to swimming pool' };
+var action = { type: 'TOGGLE_TODO', index: 0 }
+//var action = { type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ALL' }
 
 var app = todoApp(state, action);
 console.log(app);
