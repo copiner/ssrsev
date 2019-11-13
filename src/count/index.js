@@ -4,8 +4,13 @@ import { createStore } from 'redux'
 import Counter from './components/Counter'
 import counter from './reducers'
 
+console.log(createStore);
+
 const store = createStore(counter)
-const rootEl = document.getElementById('root')
+
+const element = document.createElement('div');
+element.setAttribute("id","root");
+document.body.appendChild(element);
 
 const render = () => ReactDOM.render(
   <Counter
@@ -13,8 +18,9 @@ const render = () => ReactDOM.render(
     onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
     onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
   />,
-  rootEl
+  element
 )
 
-render()
-store.subscribe(render)
+store.subscribe(render);
+
+export default render;

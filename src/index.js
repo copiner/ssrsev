@@ -1,9 +1,12 @@
 //entry
-const element = document.createElement('div');
-element.setAttribute("id","root");
-document.body.appendChild(element);
 
+//count
+import render from './count'
+render();
+
+//todos
 //import fresh from './todos'
 
-import fresh from './todomvc'
-fresh(element);
+//todomvc
+//import fresh from './todomvc'
+//fresh();

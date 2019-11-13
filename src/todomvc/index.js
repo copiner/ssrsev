@@ -12,11 +12,15 @@ store.subscribe(function () {
     //console.log(store.getState());
 });
 
-let fresh = (element) => render(
+const root = document.createElement('div');
+root.setAttribute("id","root");
+document.body.appendChild(root);
+
+let fresh = () => render(
   <Provider store={store}>
     <App />
   </Provider>,
-  element
+  root
 )
 
 export default fresh;
