@@ -1,26 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
-import Counter from './components/Counter'
-import counter from './reducers'
+import React from 'react';
+import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './reducers';
+import App from './containers/App.js';
 
-console.log(createStore);
+let store = createStore(reducer);
 
-const store = createStore(counter)
+//console.log(store);
+console.log(store.getState());//初始值{count: 0}
 
-const element = document.createElement('div');
-element.setAttribute("id","root");
-document.body.appendChild(element);
-
-const render = () => ReactDOM.render(
-  <Counter
-    value={store.getState()}
-    onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-    onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-  />,
-  element
-)
-
-store.subscribe(render);
+const root = document.createElement('div');
+root.setAttribute("id","root");
+document.body.appendChild(root);
+let render = () => ReactDom.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    root
+);
 
 export default render;

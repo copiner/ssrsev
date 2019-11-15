@@ -5,7 +5,6 @@ import actions from '../actions';
 //将state.count绑定到props的counter
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         counter: state.count
     }

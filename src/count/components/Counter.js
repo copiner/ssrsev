@@ -1,53 +1,23 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, {Component} from 'react'
 
 class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.incrementAsync = this.incrementAsync.bind(this);
-    this.incrementIfOdd = this.incrementIfOdd.bind(this);
-  }
-
-  incrementIfOdd() {
-    if (this.props.value % 2 !== 0) {
-      this.props.onIncrement()
+    render() {
+        //从组件的props属性中导入二个方法和一个变量
+        const {increment, decrement, counter} = this.props;
+        //console.log(this.props.counter);
+        //console.log(this.props.increment);
+        //渲染组件，包括一个数字，二个按钮
+        return (
+            <p>
+                Clicked: {counter} times
+                {' '}
+                <button onClick={increment}>+</button>
+                {' '}
+                <button onClick={decrement}>-</button>
+                {' '}
+            </p>
+        )
     }
-  }
-
-  incrementAsync() {
-    setTimeout(this.props.onIncrement, 1000)
-  }
-
-  render() {
-    const { value, onIncrement, onDecrement } = this.props
-    return (
-      <p>
-        Clicked: {value} times
-        {' '}
-        <button onClick={onIncrement}>
-          +
-        </button>
-        {' '}
-        <button onClick={onDecrement}>
-          -
-        </button>
-        {' '}
-        <button onClick={this.incrementIfOdd}>
-          Increment if odd
-        </button>
-        {' '}
-        <button onClick={this.incrementAsync}>
-          Increment async
-        </button>
-      </p>
-    )
-  }
-}
-
-Counter.propTypes = {
-  value: PropTypes.number.isRequired,
-  onIncrement: PropTypes.func.isRequired,
-  onDecrement: PropTypes.func.isRequired
 }
 
 export default Counter
