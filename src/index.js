@@ -5,12 +5,13 @@
 // render();
 
 //todos
-//import fresh from './todos'
+import fresh from './todos'
+fresh()
 
 //todomvc
 //import fresh from './todomvc'
 //fresh();
 
 //count
-import render from './count'
-render();
+// import render from './count'
+// render();

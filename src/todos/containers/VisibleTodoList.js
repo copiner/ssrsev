@@ -2,22 +2,20 @@ import { connect } from 'react-redux'
 import { toggleTodo } from '../actions'
 import TodoList from '../components/TodoList'
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   state: state,
-  ownProps: ownProps,
+  // ownProps: ownProps,
   todos: getVisibleTodos(state.todos, state.visibilityFilter)
-  //getVisibleTodos函数的定义在下面
 })
 
 //如果传递的是一个对象，那么每个定义在该对象的函数都将被当作 Redux action creator，而且这个对象会与 Redux store 绑定在一起，
 //其中所定义的方法名将作为属性名，合并到组件的 props 中。
 const mapDispatchToProps = {
-  onTodoClick: toggleTodo
+  knock: toggleTodo
 }
 
 const getVisibleTodos = (todos, filter) => {
-  //console.log(todos);
-  //console.log(filter);
+
   switch (filter) {
     case 'SHOW_ALL':
       return todos

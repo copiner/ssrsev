@@ -13,9 +13,6 @@ let AddTodo = ({ dispatch }) => { //store.dispatch
         e.preventDefault()
         if (!myInput.value.trim()) {
           return
-        } else {
-          //console.log("myInput : "+ myInput.value);
-          //console.log(addTodo(myInput.value));
         }
         dispatch(addTodo(myInput.value))
         myInput.value = ''

@@ -1,13 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Link = ({ state, ownProps, active, children, onClick }) => {
-  console.log(state)
-  console.log(ownProps)
-  console.log(active)
-  console.log(children)
-  if (active) {
-    return <span>{children}</span>
+const Link = (props) => {
+  console.log(props)
+  if (props.active) {
+    return <span>{props.children}</span>
   }
 
   return (
@@ -15,10 +12,10 @@ const Link = ({ state, ownProps, active, children, onClick }) => {
        onClick={e => {
          e.preventDefault()
          //onClick()
-         onClick(ownProps.filter)
+         props.knock(props.filter)
        }}
     >
-      {children}
+      {props.children}
     </a>
   )
 }
@@ -26,7 +23,7 @@ const Link = ({ state, ownProps, active, children, onClick }) => {
 Link.propTypes = {
   active: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired
+  knock: PropTypes.func.isRequired
 }
 
 export default Link
