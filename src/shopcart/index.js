@@ -9,8 +9,9 @@ import { getAllProducts } from './actions'
 import App from './containers/App'
 
 const middleware = [ thunk ];
+
 if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger());
+  //middleware.push(createLogger());
 }
 
 const store = createStore(
@@ -20,9 +21,15 @@ const store = createStore(
 
 store.dispatch(getAllProducts())
 
-render(
+const root = document.createElement('div');
+root.setAttribute("id","root");
+document.body.appendChild(root);
+
+let cart = () => render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  root
 )
+
+export default cart;

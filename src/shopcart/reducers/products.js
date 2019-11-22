@@ -38,7 +38,6 @@ const byId = (state = {}, action) => {
 const visibleIds = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
-    console.log(action)
       return action.products.map(product => product.id)
     default:
       return state
