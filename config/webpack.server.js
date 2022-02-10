@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   mode: process.env.NODE_ENV,
   target: 'node',
-  entry: resolvePath('../src/server/index.js'),
+  entry: resolvePath('../server/index.js'),
   output: {
     filename: 'index.js',
     path: resolvePath('../dist/server')

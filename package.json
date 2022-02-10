@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm-run-all -p pre:file server:dev client:dev node:dev",
+    "dev": "npm-run-all -p server:dev client:dev node:dev",
     "client:dev": "webpack  --watch --config ./config/webpack.client.dev.js",
     "server:dev": "cross-env NODE_ENV=development webpack  --watch --config ./config/webpack.server.js",
     "node:dev": "nodemon ./dist/server/index.js -w ./dist",
-    "pre:file": "node ./config/scripts/pre-file.js",
     "client:build": "webpack --config ./config/webpack.client.pro.js",
     "server:build": "cross-env NODE_ENV=production webpack --config ./config/webpack.server.js",
     "build": "npm run client:build && npm run server:build",
@@ -46,14 +45,11 @@
     "style-loader": "^1.2.1",
     "styled-components": "^5.1.0",
     "url-loader": "^4.1.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4",
     "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^4.2.2",
     "webpack-node-externals": "^1.7.2"
-  },
-  "sideEffects": [
-    "./src/client/pages/index.js"
-  ]
+  }
 }
