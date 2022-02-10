@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npm-run-all -p pre:file server:dev client:dev node:dev",
     "client:dev": "webpack  --watch --config ./config/webpack.client.dev.js",
     "server:dev": "cross-env NODE_ENV=development webpack  --watch --config ./config/webpack.server.js",
     "node:dev": "nodemon ./dist/server/index.js -w ./dist",
     "pre:file": "node ./config/scripts/pre-file.js",
-    "dev": "npm-run-all -p pre:file server:dev client:dev node:dev",
     "client:build": "webpack --config ./config/webpack.client.pro.js",
     "server:build": "cross-env NODE_ENV=production webpack --config ./config/webpack.server.js",
     "build": "npm run client:build && npm run server:build",
