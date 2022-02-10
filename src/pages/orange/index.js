@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Comp = React.lazy(() => import('./components/child'));
 
 const Index = (props) => {
-    console.log(props)
+    // console.log(props)
   const [show, setShow] = useState(false);
 
   const click = () => setShow(true);

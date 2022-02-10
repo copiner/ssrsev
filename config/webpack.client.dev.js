@@ -9,7 +9,7 @@ module.exports = merge(base, {
     filename: 'index.js',
     path: resolvePath('../dist/client')
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-source-map',
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'index.css'

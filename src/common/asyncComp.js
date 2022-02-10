@@ -18,7 +18,7 @@ const asyncComp = (load) => {
 
     componentDidMount() {
       if (!this.state.Comp) {
-        console.log('加载异步组件');
+        console.log('加载异步组件...');
         this.asyncLoad();
       }
     }

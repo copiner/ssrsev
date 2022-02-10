@@ -1,11 +1,10 @@
 import React from 'react';
-import App from '../../client/route/index';
-import routeConfig from '../../client/route/route.config';
+import App from '../../src/route/index';
+import routeConfig from '../../src/route/route.config';
 import { matchRoutes } from 'react-router-config';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { handleHtml, getStaticRoute } from '../util';
-//import { ServerStyleSheet } from 'styled-components';
 
 let staticRoute = [];
 (async () => {
@@ -14,13 +13,17 @@ let staticRoute = [];
 
 export default async (req, res, next) => {
   const { path, url } = req;
-
+  console.log(url)
   if (url.indexOf('.') > -1) {
-    return;
+      // if(url.indexOf("png") > -1){
+      //     res.writeHead(200, {'Content-Type': 'image/png'});
+      // }
+      res.end();
+      return;
   }
 
   const branch = matchRoutes(staticRoute, path)[0];
-  console.log(branch)
+
   let component = {};
 
   if (branch) {
@@ -37,14 +40,14 @@ export default async (req, res, next) => {
     initialData
   };
 
-  console.log(staticRoute)
+  // console.log(staticRoute)
   const reactStr = renderToString(
     <StaticRouter location={path} context={context}>
       <App routeConfig={staticRoute} />
     </StaticRouter>
   );
 
-  console.log("reactStr",reactStr)
+  //console.log("reactStr",reactStr)
 
   const htmlInfo = {
     reactStr,

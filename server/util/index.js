@@ -10,7 +10,7 @@ export const handleHtml = ({ reactStr, initialData, styles }) => {
     cssValues = ['index.css'];
 
   } else {
-    const mainfest = require('@dist/mainfest.json');
+    const mainfest = require('../../dist/mainfest.json');
 
     jsValues = jsKeys.map(v => mainfest[v]);
     cssValues = cssKeys.map(v => mainfest[v]);

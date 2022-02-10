@@ -1,48 +1,42 @@
-const webpack = require('webpack');
+const Webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { resolvePath } = require('./util');
 
 module.exports = {
-  entry: resolvePath('../src/client/index.js'),
-  resolve: {
-    extensions: ['.js', '.jsx']
-  },
-  module: {
-    rules: [{
-      test: /.js$/,
-      use: 'babel-loader',
-      exclude: /node_modules/
-    }, {
-      test: /\.css$/,
-      use: [MiniCssExtractPlugin.loader, 'css-loader']
-    }, {
-      test: /\.(jpg|png|jpeg)$/,
-      use: [{
-        loader: 'url-loader',
-        options: {
-          limit: 10240,
-          name: 'img/[name].[hash:7].[ext]',
-          esModule: false
-        }
-      }]
-    }]
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        libs: {
-          test: /node_modules/,
-          chunks: 'initial',
-          name: 'libs'
-        }
-      }
+    entry: resolvePath('../src/index.js'),
+    module: {
+        rules: [
+            {
+              test: /(\.jsx|\.js)$/,
+              exclude: /node_modules/,
+              use: 'babel-loader'
+            },
+            {
+              test: /\.css$/,
+              use: [
+                  MiniCssExtractPlugin.loader,
+                  'css-loader'
+              ]
+            },
+            {
+              test: /\.(png|jpg)$/,
+              type: 'asset/resource',
+              parser: {
+                 dataUrlCondition: {
+                   maxSize: 4 * 1024 // 4kb
+                 }
+               },
+              generator: {
+                 filename: 'imgs/[hash][ext][query]'
+              }
+            },
+        ]
+    },
+    plugins: [
+        new Webpack.DefinePlugin({
+          '__isServer': false
+        }),
+        new CleanWebpackPlugin()
+        ]
     }
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      '__isServer': false
-    }),
-    new CleanWebpackPlugin()
-  ]
-}

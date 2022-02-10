@@ -15,30 +15,30 @@ module.exports = {
   },
   externals: [nodeExternals()],
   module: {
-    rules: [ {
-      test: /.js$/,
-      use: 'babel-loader',
-      exclude: /node_modules/
-    },{
-      test: /\.css$/,
-      use: ['css-loader'],
-      exclude: /node_modules/
-    },{
-      test: /.(jpg|jpeg|png)$/,
-      use: {
-        loader: 'url-loader',
-        options: {
-          limit: 1024*10,
-          name: 'img/[name].[hash:7].[ext]',
-          esModule: false
-        }
-      }
-    }]
-  },
-  resolve: {
-    alias: {
-      '@dist': resolvePath('../dist'),
-    }
+    rules: [
+        {
+          test: /.js$/,
+          use: 'babel-loader',
+          exclude: /node_modules/
+        },
+        {
+          test: /\.css$/,
+          use: ['css-loader'],
+          exclude: /node_modules/
+        },
+        {
+          test: /\.(png|jpg|gif)$/,
+          type: 'asset/resource',
+          parser: {
+             dataUrlCondition: {
+               maxSize: 4 * 1024 // 4kb
+             }
+           },
+          generator: {
+             filename: 'imgs/[hash][ext][query]'
+          }
+        },
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
