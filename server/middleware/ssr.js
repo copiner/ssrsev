@@ -15,9 +15,6 @@ export default async (req, res, next) => {
   const { path, url } = req;
   console.log(url)
   if (url.indexOf('.') > -1) {
-      // if(url.indexOf("png") > -1){
-      //     res.writeHead(200, {'Content-Type': 'image/png'});
-      // }
       res.end();
       return;
   }

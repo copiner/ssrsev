@@ -1,4 +1,4 @@
-import Fruit from '../pages/fruit/index';
+import Fruit from '../components/fruit/index';
 import asyncComp from '../common/asyncComp';
 
 export default [{
@@ -7,24 +7,24 @@ export default [{
   exact: true,
   name: 'Fruits'
 }, {
-  component: asyncComp(() => import('../pages/apple/index')),
+  component: asyncComp(() => import('../components/apple/index')),
   path: '/apple',
   exact: true,
   name: 'Apple'
 }, {
-  component: asyncComp(() => import('../pages/banana/index')),
+  component: asyncComp(() => import('../components/banana/index')),
   path: '/banana',
   exact: true,
   name: 'Banana'
 }, {
-  component: asyncComp(() => import('../pages/orange/index')),
+  component: asyncComp(() => import('../components/orange/index')),
   path: '/orange',
   exact: true,
   name: 'Orange',
   routes:[
       {
         path: "/orange/pitch",
-        component: asyncComp(() => import('../pages/pitch/index')),
+        component: asyncComp(() => import('../components/pitch/index')),
       },
   ]
 }];
